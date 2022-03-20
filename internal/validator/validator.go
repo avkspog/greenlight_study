@@ -44,6 +44,10 @@ func In(value string, list ...string) bool {
 	return false
 }
 
+func Matches(value string, rx *regexp.Regexp) bool {
+	return rx.MatchString(value)
+}
+
 func Unique(values []string) bool {
 	uniqueValues := make(map[string]bool)
 
