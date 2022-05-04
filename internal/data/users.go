@@ -34,6 +34,12 @@ var (
 	ErrDuplicateEmail = errors.New("duplicate email")
 )
 
+var AnonymousUser = &User{}
+
+func (u *User) IsAnonimous() bool {
+	return u == AnonymousUser
+}
+
 func (m UserModel) Insert(user *User) error {
 	query := `INSERT INTO users (name, email, password_hash, activated)
 	VALUES ($1, $2, $3, $4)
